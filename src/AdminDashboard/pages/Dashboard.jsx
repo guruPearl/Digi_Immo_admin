@@ -8,20 +8,20 @@ const Dashboard = () => {
             <div className="md:flex flex-row items-center gap-16 mt-16 md:block hidden">
                 <div className="flex items-center gap-2 flex-row bg-white w-[467px] p-4">
                     <div>
-                        <img src="public/dashboard/sms (1) 1.png" alt="/" className="h-12 bg-gray-200 rounded-full p-2" />
+                        <img src="/dashboard/sms (1) 1.png" alt="/" className="h-12 bg-gray-200 rounded-full p-2" />
                     </div>
                     <div className="flex flex-row items-center gap-58">
                         <div><h3>SMS</h3>
                             <p className="text-[#038C7C]">sms to members</p></div>
                         <div>
-                            <img src="public/dashboard/Arrow 15.png" alt="/" className="h-6" />
+                            <img src="/dashboard/Arrow 15.png" alt="/" className="h-6" />
                         </div>
                     </div>
                 </div>
 
                 <div className="flex items-center gap-2 flex-row bg-white p-4 w-[467px]">
                     <div>
-                        <img src="public/dashboard/mail (1) 1.png" alt="/" className="h-12 bg-gray-200 rounded-full p-2" />
+                        <img src="/dashboard/mail (1) 1.png" alt="/" className="h-12 bg-gray-200 rounded-full p-2" />
                     </div>
                     <div className="flex flex-row items-center gap-32">
                         <div>
@@ -29,7 +29,7 @@ const Dashboard = () => {
                             <p className="text-[#038C7C] text-nowrap">Send Instance App Notification</p>
                         </div>
                         <div>
-                            <img src="public/dashboard/Arrow 15.png" alt="/" className="h-6" />
+                            <img src="/dashboard/Arrow 15.png" alt="/" className="h-6" />
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ const Dashboard = () => {
                         <br />
                         <div className="flex flex-row items-center gap-4">
                             <span className="font-bold ">Total Users </span>
-                            <img src="public/dashboard/user 1.png" alt="/" className="h-6" />
+                            <img src="/dashboard/user 1.png" alt="/" className="h-6" />
                         </div>
                         <br />
                         <span className="font-bold">120</span>
@@ -58,7 +58,7 @@ const Dashboard = () => {
                     <div >
                         <div className="flex flex-row items-center gap-4 pt-8">
                             <span>Total Units</span>
-                            <img src="public/dashboard/home-icon-silhouette 1.png" alt="/" className="h-6" />
+                            <img src="/dashboard/home-icon-silhouette 1.png" alt="/" className="h-6" />
                         </div>
 
                         <span className="font-bold">260</span>
@@ -75,12 +75,12 @@ const Dashboard = () => {
                     <div className="flex items-center gap-42 flex-row  p-4 pl-12">
 
                         <div>
-                            <img src="public/dashboard/chat 1.png" alt="/" className="h-12 pl-1" />
+                            <img src="/dashboard/chat 1.png" alt="/" className="h-12 pl-1" />
                             <h2>Personal</h2>
                             <span className="flex justify-center font-bold">210</span>
                         </div>
                         <div>
-                            <img src="public/dashboard/chat (1) 1.png" alt="/" className="h-12 pl-4" />
+                            <img src="/dashboard/chat (1) 1.png" alt="/" className="h-12 pl-4" />
                             <h2>Community</h2>
                             <span className="flex justify-center font-bold">52</span>
                         </div>

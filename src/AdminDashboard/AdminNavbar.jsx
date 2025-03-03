@@ -22,7 +22,7 @@ export default function AdminNavbar() {
     <>
       {/* Navbar */}
       <div className="flex items-center gap-6  px-4 md:px-8 py-2 bg-[#41CD68] text-white shadow-md fixed ">
-      <img src="/public/logo (1).png" alt="Logo" className="h-10 md:h-14 md:block hidden" />
+      <img src="/logo (1).png" alt="Logo" className="h-10 md:h-14 md:block hidden" />
         <button onClick={() => setOpen(!isOpen)} className="md:hidden">
           <IoMdMenu className="text-3xl" />
         </button>
@@ -31,7 +31,8 @@ export default function AdminNavbar() {
         <p className="text-xl font-bold text-nowrap md:hidden block">Society Management App</p>
         <p className="text-xl font-bold text-nowrap md:block hidden">Society Management AppLication Admin</p>
         
-        <img src="/public/logo (1).png" alt="Logo" className="h-10 md:h-14 md:hidden block" />
+        <img src="/logo (1).png" alt="Logo" className="h-10 md:h-14 md:hidden block" />
+
         <div className="md:block hidden flex items-center flex-row pl-[450px] ">
           <button  className="pr-10 cursor-pointer " type="button">Admin</button>
           <button   className="pr-10 cursor-pointer" type="button">Configure SMA</button>

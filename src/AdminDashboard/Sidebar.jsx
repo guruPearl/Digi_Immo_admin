@@ -1,20 +1,20 @@
 
 const Sidebar = ({ isOpen, setOpen, activeTab, setActiveTab }) => {
   const menuItems = [
-    { name: "Dashboard", img:"/public/sidebar/speedometer 1.png" },
-    { name: "Manage User ",img:"public/sidebar/manage-315 (2) 1.png"  },
-    { name: "HelpDesk Trackers", img:"public/sidebar/customer-support-1716 1.png" },
-    { name: "Income Tracker", img:"public/sidebar/cash 1.png" },
-    { name: "Expense Tracker",img:"public/sidebar/budget 1.png" },
-    { name: "Utility Tracker", img:"public/sidebar/utility 1.png" },
-    { name: "Gereral Ledger", img:"public/sidebar/information 1.png" },
-    { name: "Asset & Inventory", img:"public/sidebar/inventory 1.png"},
-    { name: "Vendor Master",img:"public/sidebar/vendor 1.png" },
-    { name: "Projects & Meetings",img:"public/sidebar/conversation 1.png"  },
-    { name: "Facility & Activity", img:"public/sidebar/calendar 1.png" },
-    { name: "Pranking Manager",img:"public/sidebar/car 1.png"  },
-    { name: "Staff Manager", img:"public/sidebar/team 1.png" },
-    { name: "Notice Manager",img:"public/sidebar/notice 1.png"  },
+    { name: "Dashboard", img:"/sidebar/speedometer 1.png" },
+    { name: "Manage User ",img:"/sidebar/manage-315 (2) 1.png"  },
+    { name: "HelpDesk Trackers", img:"/sidebar/customer-support-1716 1.png" },
+    { name: "Income Tracker", img:"/sidebar/cash 1.png" },
+    { name: "Expense Tracker",img:"/sidebar/budget 1.png" },
+    { name: "Utility Tracker", img:"/sidebar/utility 1.png" },
+    { name: "Gereral Ledger", img:"/sidebar/information 1.png" },
+    { name: "Asset & Inventory", img:"/sidebar/inventory 1.png"},
+    { name: "Vendor Master",img:"/sidebar/vendor 1.png" },
+    { name: "Projects & Meetings",img:"/sidebar/conversation 1.png"  },
+    { name: "Facility & Activity", img:"/sidebar/calendar 1.png" },
+    { name: "Pranking Manager",img:"/sidebar/car 1.png"  },
+    { name: "Staff Manager", img:"/sidebar/team 1.png" },
+    { name: "Notice Manager",img:"/sidebar/notice 1.png"  },
   ];
 
   return (

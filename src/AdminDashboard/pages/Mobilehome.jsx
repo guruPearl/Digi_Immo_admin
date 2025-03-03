@@ -6,20 +6,20 @@ const Mobilehome = () => {
  <>
 <div className="bg-gray-200 h-34 md:hidden block flex flex-row items-center gap-10 pl-4 pt-8">
 <div>
-<img src="public/dashboard/sms (1) 1.png" alt="/" className="h-14  bg-white rounded-full p-2 " />
+<img src="/dashboard/sms (1) 1.png" alt="/" className="h-14  bg-white rounded-full p-2 " />
 
 <span className="text-xs">SEND SMS</span>
 </div>
 <div>
-<img src="public/dashboard/mail (1) 1.png" alt="/" className="h-14  bg-white rounded-full p-2"/>
+<img src="/dashboard/mail (1) 1.png" alt="/" className="h-14  bg-white rounded-full p-2"/>
 <span className="text-xs">SEND FLASH</span>
 </div>
 <div>
-<img src="public/dashboard/home-icon-silhouette 1.png" alt="/" className="h-14  bg-white rounded-full p-2" />
+<img src="/dashboard/home-icon-silhouette 1.png" alt="/" className="h-14  bg-white rounded-full p-2" />
 <span className="text-xs pl-3">UNITS</span>
 </div>
 <div>
-<img src="public/dashboard/manage-315 (2) 1 (1).png" alt="/" className="h-14  bg-white rounded-full p-2"/>
+<img src="/dashboard/manage-315 (2) 1 (1).png" alt="/" className="h-14  bg-white rounded-full p-2"/>
 <span className="text-xs pl-2">USERS</span>
 </div>
 </div>
@@ -33,8 +33,8 @@ const Mobilehome = () => {
  <div> <span className="text-xl ">Rajaram <br /> B3-26 </span></div>
 <div className="flex flex-row items-center gap-4">
 <span className=" text-xl">Owner </span>
-  <img src="public/dashboard/correct 1.png" alt="/" className="h-8"/>
-  <img src="public/dashboard/remove (1) 1.png" alt="" className="h-8" />
+  <img src="/dashboard/correct 1.png" alt="/" className="h-8"/>
+  <img src="/dashboard/remove (1) 1.png" alt="" className="h-8" />
 </div>
 </div>
 
