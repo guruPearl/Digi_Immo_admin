@@ -33,14 +33,14 @@ export default function Expense() {
 
   return (
  
-     <div className="bg-white shadow-lg rounded-lg w-[467px] h-[298px] mt-1 flex flex-col justify-center md:block hidden">
+     <div className="bg-white shadow-lg rounded-lg w-[467px] h-[298px] mt-1 flex  justify-center md:block hidden">
           
           <h3 className="text-[#1F87B4] text-2xl border-b-4 border-dotted border-[#1F87B4]  ml-2 w-[156px] text-nowrap ">
             Expense Tracker
           </h3>
     
           
-          <div className="flex justify-center items-center w-full h-full p-8">
+          <div className="flex justify-center items-center w-[467px] h-[298px] p-8">
           <Bar data={data} options={options}/>
           </div>
         </div>

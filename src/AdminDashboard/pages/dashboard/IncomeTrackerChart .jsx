@@ -12,7 +12,7 @@ const IncomeTrackerChart = () => {
       },
     ],
   };
-
+ 
   const options = {
     responsive: true,
     cutout: "75%", 
@@ -32,7 +32,7 @@ const IncomeTrackerChart = () => {
       </h3>
 
       
-      <div className="flex justify-center items-center w-full h-full">
+      <div className="flex justify-center items-center w-[467px] h-[298px] p-8">
         <Doughnut data={data} options={options} />
       </div>
     </div>

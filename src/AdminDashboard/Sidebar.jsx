@@ -19,7 +19,7 @@ const Sidebar = ({ isOpen, setOpen, activeTab, setActiveTab }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-full w-64 bg-[#484747] shadow-md pt-4  transform md:mt-18 mt-14 ${
+      className={`fixed top-0 left-0 h-full w-64 bg-[#484747] shadow-md pt-4  transform md:mt-20 lg:mt-20 mt-14 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } md:translate-x-0 transition-transform md:block`}
     >
