@@ -5,7 +5,7 @@ const Dashboard = () => {
     return (
         <>
         {/* first phase */}
-            <div className="md:flex lg:flex flex-row items-center gap-16 mt-18 md:block hidden">
+            <div className="md:flex lg:flex flex-row items-center lg:gap-16 gap-12 mt-18 md:block hidden">
                 <div className="flex items-center gap-2  flex-row bg-white w-[467px] p-4 shadow-lg">
                     <div>
                         <img src="/dashboard/sms (1) 1.png" alt="/" className="h-12 bg-gray-200 rounded-full p-2" />
@@ -94,7 +94,7 @@ const Dashboard = () => {
 
 {/* Charts */}
 <h2 className="pt-3 pb-2 pl-2 text-xl md:block hidden">ACCOUNTING</h2>
-            <div className="grid  md:grid-cols-2 lg:gap-6">
+            <div className="grid  md:grid-cols-2 lg:gap-16 gap-12">
             
                 <IncomeTrackerChart />
                 <Expense/>
