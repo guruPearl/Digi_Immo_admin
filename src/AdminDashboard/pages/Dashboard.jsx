@@ -93,8 +93,9 @@ const Dashboard = () => {
             </div>
 
 {/* Charts */}
-
+<h2 className="pt-3 pb-2 pl-2 text-xl md:block hidden">ACCOUNTING</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
                 <IncomeTrackerChart />
                 <Expense/>
             </div>
