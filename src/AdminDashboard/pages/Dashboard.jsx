@@ -43,7 +43,7 @@ const Dashboard = () => {
                 <div className="flex  lg:gap-12 md:gap-6 flex-row bg-white  w-[467px] h-[298px] p-4 rounded-lg shadow-lg">
 
                     <div className="border-r-2 border-gray-300 pr-32">
-                        <span><h3 className="text-[#1F87B4] text-2xl border-b-4 border-dotted border-[#1F87B4] ">Units & Users</h3></span>
+                        <span><h3 className="text-[#1F87B4] text-2xl border-b-4 border-dotted border-[#1F87B4] text-nowrap">Units & Users</h3></span>
                         <br />
                         <div className="flex flex-row items-center gap-4">
                             <span className="font-bold ">Total Users </span>
@@ -75,7 +75,7 @@ const Dashboard = () => {
                     <div className="flex items-center gap-42 flex-row  p-4 pl-12">
 
                         <div>
-                            <img src="/dashboard/chat 1.png" alt="/" className="h-12 pl-1" />
+                            <img src="/dashboard/chat 1.png" alt="/" className="h-12 pl-1" /> 
                             <h2>Personal</h2>
                             <span className="flex justify-center font-bold">210</span>
                         </div>
@@ -94,7 +94,7 @@ const Dashboard = () => {
 
 {/* Charts */}
 <h2 className="pt-3 pb-2 pl-2 text-xl md:block hidden">ACCOUNTING</h2>
-            <div className="grid  md:grid-cols-2 lg:gap-6 md:gap-48">
+            <div className="grid  md:grid-cols-2 lg:gap-6">
             
                 <IncomeTrackerChart />
                 <Expense/>

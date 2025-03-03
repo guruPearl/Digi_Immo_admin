@@ -22,7 +22,7 @@ export default function AdminPanel() {
 
   return (
     <>
-    <div className=" h-auto">  <AdminNavbar /></div>
+    <div className="bg-gray-200 md:w-[1380px] lg:w-[1348px]">  <AdminNavbar /></div>
   
  
     </>
