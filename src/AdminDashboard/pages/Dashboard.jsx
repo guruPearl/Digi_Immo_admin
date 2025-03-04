@@ -94,7 +94,7 @@ const Dashboard = () => {
 
 {/* Charts */}
 <h2 className="pt-3 pb-2 pl-2 text-xl md:block hidden">ACCOUNTING</h2>
-            <div className="grid  md:grid-cols-2 lg:gap-16 gap-12">
+            <div className="md:flex flex-row items-center lg:gap-16 gap-12 mt-2 ">
             
                 <IncomeTrackerChart />
                 <Expense/>
