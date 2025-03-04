@@ -56,8 +56,8 @@ const Dashboard = () => {
                         <p><span className="font-bold pr-1">12</span> Never Logged in</p>
                     </div>
                     <div >
-                        <div className="flex flex-row items-center gap-4 pt-8">
-                            <span>Total Units</span>
+                        <div className="flex flex-row items-center gap-1 pt-8">
+                            <span className="text-nowrap font-bold">Total Units</span>
                             <img src="/dashboard/home-icon-silhouette 1.png" alt="/" className="h-6" />
                         </div>
 

@@ -69,7 +69,7 @@ const Mobilehome = () => {
 <div className="flex justify-center items-center flex-col mt-8">
 <div className="flex flex-row items-center justify-center gap-5  md:hidden block">
   <div className="bg-[#46BB51]  w-[137px] h-[36px] text-center">
-<h2 className="text-white pt-1.5 ">View All</h2>
+<h2 className="text-white pt-1.5 ">View All</h2> 
   </div>
   <div className="bg-[#5A9260]  w-[137px] h-[36px] text-center">
 <h2 className="text-white pt-1.5 ">Create</h2>
