@@ -4,7 +4,7 @@ import React from "react";
 const Mobilehome = () => {
   return (
  <>
-<div className="bg-gray-200 h-34 md:hidden block flex flex-row items-center gap-8 justify-center pt-8 text-center">
+<div className="bg-gray-200 h-28 md:hidden block flex flex-row items-center gap-8 justify-center pt-18 pb-14 text-center">
 <div>
 <img src="/dashboard/sms (1) 1.png" alt="/" className="h-14  bg-white rounded-full p-2 " />
 
@@ -26,7 +26,8 @@ const Mobilehome = () => {
 
 {/* first part */}
 
-<div className="flex justify-center items-center flex-col mt-8">
+<div className="bg-gray-100 pt-8">
+<div className="flex justify-center items-center flex-col ">
 <div className="flex items-center flex-row bg-[#615F6A] pt-6 pb-6 pl-14 pr-10  w-[315px] h-[60px] md:hidden block">
   <h2 className="text-xl  text-white text-nowrap">Approve New Member</h2>
 </div>
@@ -73,6 +74,7 @@ const Mobilehome = () => {
   <div className="bg-[#5A9260]  w-[137px] h-[36px] text-center">
 <h2 className="text-white pt-1.5 ">Create</h2>
   </div>
+</div>
 </div>
 </div>
 </div>

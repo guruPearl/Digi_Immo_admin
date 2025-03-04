@@ -1,7 +1,7 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJs } from "chart.js/auto";
-
+     
 const IncomeTrackerChart = () => {
   const data = {
     labels: ["Control", "Balance"],
@@ -25,7 +25,7 @@ const IncomeTrackerChart = () => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg w-[467px] h-[298px] mt-1 flex flex-col justify-center md:block hidden">
+    <div className="bg-white shadow-lg rounded-lg w-[467px] h-[298px]  mt-1 flex flex-col justify-center md:block hidden">
       
       <h3 className="text-[#1F87B4] text-2xl border-b-4 border-dotted border-[#1F87B4] ml-2 w-[156px] text-nowrap ">
         Income Tracker
@@ -35,6 +35,7 @@ const IncomeTrackerChart = () => {
       <div className="flex justify-center items-center w-[467px] h-[298px] p-8">
         <Doughnut data={data} options={options} />
       </div>
+
     </div>
   );
 };

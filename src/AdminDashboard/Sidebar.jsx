@@ -41,7 +41,7 @@ const Sidebar = ({ isOpen, setOpen, activeTab, setActiveTab }) => {
             onClick={() => {
               setActiveTab(item.name);
               setOpen(false); 
-            }}
+            }}       
           >
         <img src={item.img} alt="/"  className="mr-4 h-4"/>
             {item.name}
