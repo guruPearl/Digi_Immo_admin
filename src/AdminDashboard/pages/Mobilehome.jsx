@@ -4,23 +4,23 @@ import React from "react";
 const Mobilehome = () => {
   return (
  <>
-<div className="bg-gray-200 h-34 md:hidden block flex flex-row items-center gap-8 justify-center pt-8">
+<div className="bg-gray-200 h-34 md:hidden block flex flex-row items-center gap-8 justify-center pt-8 text-center">
 <div>
 <img src="/dashboard/sms (1) 1.png" alt="/" className="h-14  bg-white rounded-full p-2 " />
 
-<span className="text-xs">SEND SMS</span>
+<span className="text-xs text-nowarp">SEND SMS</span>
 </div>
 <div>
 <img src="/dashboard/mail (1) 1.png" alt="/" className="h-14  bg-white rounded-full p-2"/>
-<span className="text-xs">SEND FLASH</span>
+<span className="text-xs text-nowrap">SEND FLASH</span>
 </div>
 <div>
 <img src="/dashboard/home-icon-silhouette 1.png" alt="/" className="h-14  bg-white rounded-full p-2" />
-<span className="text-xs pl-3">UNITS</span>
+<span className="text-xs  text-nowarp">UNITS</span>
 </div>
 <div>
 <img src="/dashboard/manage-315 (2) 1 (1).png" alt="/" className="h-14  bg-white rounded-full p-2"/>
-<span className="text-xs pl-2">USERS</span>
+<span className="text-xs pl-2 text-nowrap">USERS</span>
 </div>
 </div>
 
@@ -41,11 +41,11 @@ const Mobilehome = () => {
 
 <div className="flex justify-center items-center flex-col mt-8">
 <div className="flex flex-row items-center justify-center gap-5 md:hidden block">
-  <div className="bg-[#46BB51]  w-[157px] h-[36px]">
-<h2 className="text-white pt-1.5 pl-10">View All</h2>
+  <div className="bg-[#46BB51]  w-[137px] h-[36px] text-center">
+<h2 className="text-white pt-1.5">View All</h2>
   </div>
-  <div className="bg-[#5A9260]  w-[157px] h-[36px]">
-<h2 className="text-white pt-1.5 pl-6">Add Member</h2>
+  <div className="bg-[#5A9260]  w-[137px] h-[36px] text-center">
+<h2 className="text-white pt-1.5 ">Add Member</h2>
   </div>
 </div>
 </div>
@@ -67,11 +67,11 @@ const Mobilehome = () => {
 
 <div className="flex justify-center items-center flex-col mt-8">
 <div className="flex flex-row items-center justify-center gap-5  md:hidden block">
-  <div className="bg-[#46BB51]  w-[157px] h-[36px]">
-<h2 className="text-white pt-1.5 pl-10">View All</h2>
+  <div className="bg-[#46BB51]  w-[137px] h-[36px] text-center">
+<h2 className="text-white pt-1.5 ">View All</h2>
   </div>
-  <div className="bg-[#5A9260]  w-[157px] h-[36px]">
-<h2 className="text-white pt-1.5 pl-10">Create</h2>
+  <div className="bg-[#5A9260]  w-[137px] h-[36px] text-center">
+<h2 className="text-white pt-1.5 ">Create</h2>
   </div>
 </div>
 </div>
