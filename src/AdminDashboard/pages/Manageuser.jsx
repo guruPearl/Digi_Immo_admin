@@ -1,8 +1,8 @@
 const Manageuser = () => {
     return (
-      <div className="mt-90">
+      <div className="mt-16 font-bold">
       
-        <p >Welcome to the Manage user!</p>
+        <h1 >Welcome to the Manage user!</h1>
       </div>
     );
   };

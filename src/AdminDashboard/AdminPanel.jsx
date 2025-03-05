@@ -5,7 +5,7 @@ export default function AdminPanel() {
 
   return (
     <>
-    <div className="bg-gray-200 md:w-[1380px]  lg:w-full">  <AdminNavbar /></div>
+    <div className="bg-gray-200 md:w-[1380px]  lg:w-full ">  <AdminNavbar /></div>
   
     </>
   );

@@ -26,9 +26,9 @@ const Mobilehome = () => {
 
 {/* first part */}
 
-<div className="bg-gray-100 pt-8">
+<div className="bg-gray-100 pt-8 md:hidden block">
 <div className="flex justify-center items-center flex-col ">
-<div className="flex items-center flex-row bg-[#615F6A] pt-6 pb-6 pl-14 pr-10  w-[315px] h-[60px] md:hidden block">
+<div className="flex items-center flex-row bg-[#615F6A] pt-6 pb-6 pl-14 pr-10  w-[315px] h-[60px] ">
   <h2 className="text-xl  text-white text-nowrap">Approve New Member</h2>
 </div>
 <div className="flex flex-row items-center w-[315px] h-[110px] bg-white  shadow-lg gap-10 justify-center md:hidden block">
