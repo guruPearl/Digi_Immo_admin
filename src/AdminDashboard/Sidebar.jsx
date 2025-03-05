@@ -2,12 +2,12 @@
 const Sidebar = ({ isOpen, setOpen, activeTab, setActiveTab }) => {
   const menuItems = [
     { name: "Dashboard", img:"/sidebar/speedometer 1.png" },
-    { name: "Manage User ",img:"/sidebar/manage-315 (2) 1.png"  },
+    { name: "Manage User",img:"/sidebar/manage-315 (2) 1.png"  },
     { name: "HelpDesk Trackers", img:"/sidebar/customer-support-1716 1.png" },
     { name: "Income Tracker", img:"/sidebar/cash 1.png" },
     { name: "Expense Tracker",img:"/sidebar/budget 1.png" },
     { name: "Utility Tracker", img:"/sidebar/utility 1.png" },
-    { name: "Gereral Ledger", img:"/sidebar/information 1.png" },
+    { name: "General Ledger", img:"/sidebar/information 1.png" },
     { name: "Asset & Inventory", img:"/sidebar/inventory 1.png"},
     { name: "Vendor Master",img:"/sidebar/vendor 1.png" },
     { name: "Projects & Meetings",img:"/sidebar/conversation 1.png"  },
@@ -42,7 +42,7 @@ const Sidebar = ({ isOpen, setOpen, activeTab, setActiveTab }) => {
               setActiveTab(item.name);
               setOpen(false); 
             }}       
-          >
+          >  
         <img src={item.img} alt="/"  className="mr-4 h-4"/>
             {item.name}
           </li>
