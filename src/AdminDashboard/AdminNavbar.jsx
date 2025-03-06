@@ -1,5 +1,5 @@
 import { IoMdMenu } from "react-icons/io";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Dashboard from "./pages/Dashboard";
 import Mobilehome from "./pages/Mobilehome";
@@ -16,45 +16,45 @@ import Facility from "./pages/Facility";
 import PrankingManager from "./pages/PrankingManager";
 import StaffManager from "./pages/StaffManager";
 import NoticeManager from "./pages/NoticeManager";
+
 export default function AdminNavbar() {
   const [isOpen, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Dashboard");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Handle screen resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const renderContent = () => {
-    switch (activeTab) {
-      case "Dashboard":
-        return <Dashboard />;
-      case "Manage User":
-        return <Manageuser />;
-      case "HelpDesk Trackers":
-        return <HelpDesk />;
-      case "Income Tracker":
-        return <Income />;
-      case "Expense Tracker":
-        return <ExpenseTracker />;
-      case "Utility Tracker":
-        return <Utility />;
-      case "General Ledger":
-        return <General />;
-      case "Asset & Inventory":
-        return <AssetInventory />;
-      case "Vendor Master":
-        return <Vendor />;
-      case "Projects & Meetings":
-        return <ProjectsMeetings />;
-      case "Facility & Activity":
-        return <Facility />;
-      case "Pranking Manager":
-        return <PrankingManager />;
-      case "Staff Manager":
-        return <StaffManager />;
-      case "Notice Manager":
-        return <NoticeManager />;
-      default:
-        return <Dashboard />;
+    if (activeTab === "Dashboard") {
+      return isMobile ? <Mobilehome /> : <Dashboard />;
     }
-  };
 
+    const pages = {
+      "Manage User": <Manageuser />,
+      "HelpDesk Trackers": <HelpDesk />,
+      "Income Tracker": <Income />,
+      "Expense Tracker": <ExpenseTracker />,
+      "Utility Tracker": <Utility />,
+      "General Ledger": <General />,
+      "Asset & Inventory": <AssetInventory />,
+      "Vendor Master": <Vendor />,
+      "Projects & Meetings": <ProjectsMeetings />,
+      "Facility & Activity": <Facility />,
+      "Pranking Manager": <PrankingManager />,
+      "Staff Manager": <StaffManager />,
+      "Notice Manager": <NoticeManager />,
+    };
+
+    return pages[activeTab] || <Dashboard />;
+  };
 
   return (
     <>
@@ -66,14 +66,10 @@ export default function AdminNavbar() {
           <button onClick={() => setOpen(!isOpen)} className="md:hidden">
             <IoMdMenu className="text-3xl" />
           </button>
-          <p className="text-xl font-bold text-nowrap md:hidden block ">Society Management App</p>
-          <p className="text-xl font-bold text-nowrap md:block hidden">Society Management AppLication Admin</p>
-
+          <p className="text-xl font-bold text-nowrap md:hidden block">Society Management App</p>
+          <p className="text-xl font-bold text-nowrap md:block hidden">Society Management Application Admin</p>
           <img src="/logo (1).png" alt="Logo" className="h-10 md:h-14 md:hidden block" />
-
-
         </div>
-
 
         <div className="hidden md:flex items-center space-x-6">
           <button className="cursor-pointer">Admin</button>
@@ -82,12 +78,12 @@ export default function AdminNavbar() {
         </div>
       </nav>
 
+      {/* Sidebar */}
       <Sidebar isOpen={isOpen} setOpen={setOpen} activeTab={activeTab} setActiveTab={setActiveTab} />
 
-
-
-      <div className="p-6 md:ml-64 ">{renderContent()}</div>
-      <Mobilehome />
+      {/* Content Area */}
+      <div className="p-6 md:ml-64">{renderContent()}</div>
+      
     </>
   );
 }
