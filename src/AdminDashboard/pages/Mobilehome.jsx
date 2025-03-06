@@ -4,11 +4,11 @@ import React from "react";
 const Mobilehome = () => {
   return (
  <>
-<div className="bg-gray-200 h-28 md:hidden block flex flex-row items-center gap-8 justify-center pt-26 pb-14 text-center">
+<div className="bg-gray-200 h-28 md:hidden block flex flex-row items-center gap-6 justify-center pt-26 pb-14 text-center">
 <div>
 <img src="/dashboard/sms (1) 1.png" alt="/" className="h-14  bg-white rounded-full p-2 " />
 
-<span className="text-xs text-nowarp">SEND SMS</span>
+<span className="text-xs text-nowrap">SEND SMS</span>
 </div>
 <div>
 <img src="/dashboard/mail (1) 1.png" alt="/" className="h-14  bg-white rounded-full p-2"/>

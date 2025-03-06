@@ -23,7 +23,7 @@ const Manageuser = () => {
         <tr className="flex lg:flex-row  flex-col items-center lg:gap-24 gap-2 mb-4 lg:p-2 lg:pb-2 pb-4  rounded-md lg:bg-[#41CD68] bg-white  lg:text-white">
           <th className="lg:block hidden">Photo</th>
           <td className="lg:hidden block overflow-hidden">
-            <img src="public/dashboard/download (1).jpg" alt="/" className="w-80 h-full object-cover" />
+            <img src="/dashboard/download (1).jpg" alt="/" className="w-80 h-full object-cover" />
           </td>
           <th className="lg:block hidden ">User Name</th>
           <div className="lg:hidden block flex flex-row gap-28">
@@ -52,7 +52,7 @@ const Manageuser = () => {
 
           <tr className="flex lg:flex-row flex-col items-center gap-22 text-center ">
             <td>
-              <img src="public/dashboard/download (1).jpg" alt="/" className="h-12" />
+              <img src="/dashboard/download (1).jpg" alt="/" className="h-12" />
             </td>
             <td>Guru</td>
             <td className="pl-8">6346932697</td>
@@ -67,7 +67,7 @@ const Manageuser = () => {
         <tr className="flex lg:flex-row flex-col items-center lg:gap-24 gap-2 mb-4 lg:p-2 lg:pb-2 pb-4  rounded-md lg:bg-[#41CD68] bg-white  lg:text-white">
           <th className="lg:block hidden">Photo</th>
           <td className="lg:hidden block overflow-hidden">
-            <img src="public/dashboard/download (1).jpg" alt="/" className="w-80 h-full object-cover" />
+            <img src="/dashboard/download (1).jpg" alt="/" className="w-80 h-full object-cover" />
           </td>
           <th className="lg:block hidden ">User Name</th>
           <div className="lg:hidden block flex flex-row gap-28">
@@ -96,7 +96,7 @@ const Manageuser = () => {
 
           <tr className="flex lg:flex-row flex-col items-center gap-22 text-center ">
             <td>
-              <img src="public/dashboard/download (1).jpg" alt="/" className="h-12" />
+              <img src="/dashboard/download (1).jpg" alt="/" className="h-12" />
             </td>
             <td>Guru</td>
             <td className="pl-8">6346932697</td>

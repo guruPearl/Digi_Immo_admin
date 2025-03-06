@@ -43,7 +43,7 @@ const Dashboard = () => {
                 <div className="flex  lg:gap-12 md:gap-6 flex-row bg-white  w-[467px] h-[298px] p-4 rounded-lg shadow-lg">
 
                     <div className="border-r-2 border-gray-300 pr-32">
-                        <span><h3 className="text-[#1F87B4] text-2xl border-b-4 border-dotted border-[#1F87B4] text-nowrap">Units & Users</h3></span>
+                        <span><h3 className="text-[#1F87B4] text-2xl text-nowrap font-medium">Units & Users</h3></span>
                         <br />
                         <div className="flex flex-row items-center gap-4">
                             <span className="font-bold ">Total Users </span>
@@ -66,7 +66,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="bg-white w-[467px] h-[298px] p-4 rounded-lg shadow-lg ">
-                    <h3 className="text-[#1F87B4] text-2xl border-b-4 border-dotted border-[#1F87B4] mb-4 inline-block">
+                    <h3 className="text-[#1F87B4] text-2xl mb-4 inline-block font-medium">
                         HelpDesk Tracker
                     </h3>
                     <br />
@@ -88,7 +88,7 @@ const Dashboard = () => {
                     </div>
                     <button className="bg-blue-300 w-full p-1 rounded-sm text-white" type="button">Lodge New Ticket</button>
                     <br />
-                    <button type="button" className="bg-gray-300 w-full mt-2 p-1 rounded-sm text-white ">25 My Ticket</button>
+                    <button type="button" className="bg-gray-400 w-full mt-2 p-1 rounded-sm text-white ">25 My Ticket</button>
                 </div>
             </div>
 

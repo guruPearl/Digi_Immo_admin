@@ -35,7 +35,7 @@ export default function Expense() {
  
      <div className="bg-white shadow-lg rounded-lg w-[467px] h-[298px] mt-1 flex  justify-center md:block hidden">
           
-          <h3 className="text-[#1F87B4] text-2xl border-b-4 border-dotted border-[#1F87B4]  ml-2 w-[156px] text-nowrap ">
+          <h3 className="text-[#1F87B4] text-2xl  ml-2 w-[156px] text-nowrap font-medium ">
             Expense Tracker
           </h3>
     
