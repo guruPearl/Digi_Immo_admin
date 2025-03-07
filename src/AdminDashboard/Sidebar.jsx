@@ -24,9 +24,9 @@ const Sidebar = ({ isOpen, setOpen, activeTab, setActiveTab }) => {
       } md:translate-x-0 transition-transform md:block`}
     >
   
-      {/* <button className="md:hidden mb-4 text-right text-gray-600 text-white" onClick={() => setOpen(false)}>
+      <button className="md:hidden mb-4 text-right text-gray-600 text-white" onClick={() => setOpen(false)}>
         ✖ Close
-      </button> */}
+      </button>
 
    
       <ul>
@@ -36,7 +36,7 @@ const Sidebar = ({ isOpen, setOpen, activeTab, setActiveTab }) => {
             className={`flex  cursor-pointer  w-full transition-colors text-white p-2 ${
               activeTab === item.name
                 ? "bg-[#696969] text-white w-full"
-                : "hover:bg-[#696969]"
+                : "hover:bg-[#696969]" 
             }`}
             onClick={() => {
               setActiveTab(item.name);

@@ -22,7 +22,7 @@ export default function AdminNavbar() {
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Handle screen resize
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
