@@ -1,7 +1,18 @@
 import React from "react";
+import { useEffect } from "react";
 import IncomeTrackerChart from "./dashboard/IncomeTrackerChart ";
 import Expense from "./dashboard/Expense";
 const Dashboard = () => {
+    // const [user, setUser] = useState(null);
+
+    // useEffect(() => {
+      
+    //   const storedUser = localStorage.getItem("user");
+    //   if (storedUser) {
+    //     setUser(JSON.parse(storedUser));
+    //   }
+    // }, []);
+  
     return (
         <>
         {/* first phase */}
