@@ -15,7 +15,7 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
 
-    
+
     const encodedCredentials = btoa("Pearl:PearlProdChecker@12390");
     const formdata = new FormData();
     formdata.append("userName", userName)
@@ -33,13 +33,13 @@ export default function LoginPage() {
       console.log("API Response:", response);
 
       if (response.status === 200 && response.data.token) {
-        
+
         localStorage.setItem("token", data.token);
         localStorage.setItem("userRole", data.role);
         localStorage.setItem("userEmail", data.syndicAdminEmail);
 
         alert("Login Successful!");
-        navigate("/adminpanel"); 
+        navigate("/adminpanel");
       } else {
         setError(data.message || "Invalid credentials");
       }

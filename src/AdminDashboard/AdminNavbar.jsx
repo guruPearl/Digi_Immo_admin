@@ -19,7 +19,7 @@ import NoticeManager from "./pages/NoticeManager";
 
 export default function AdminNavbar() {
   const [isOpen, setOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Dashboard");
+  const [activeTab, setActiveTab] = useState(" ");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   
