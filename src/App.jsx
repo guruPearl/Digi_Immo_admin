@@ -19,6 +19,7 @@ import Facility from "./AdminDashboard/pages/Facility";
 import PrankingManager from "./AdminDashboard/pages/PrankingManager";
 import StaffManager from "./AdminDashboard/pages/StaffManager";
 import NoticeManager from "./AdminDashboard/pages/NoticeManager";
+import AllBuildings from "./AdminDashboard/pages/AllBuildings";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="manage-user" element={<Manageuser />} />
           <Route path="helpdesk-trackers" element={<HelpDesk />} />
           <Route path="income-tracker" element={<Income />} />
+          <Route path="all-buildings" element={AllBuildings}/>
           <Route path="expense-tracker" element={<ExpenseTracker />} />
           <Route path="utility-tracker" element={<Utility />} />
           <Route path="general-ledger" element={<General />} />

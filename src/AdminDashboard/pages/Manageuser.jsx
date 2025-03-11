@@ -4,10 +4,10 @@ import { IoIosAddCircle } from "react-icons/io";
 import { BsBoxArrowInLeft } from "react-icons/bs";
 import { MdEditSquare, MdDelete } from "react-icons/md";
 
-import { FcApprove } from "react-icons/fc";
-import { FcDisapprove } from "react-icons/fc";
+import { FaCheck } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 import { data } from "react-router-dom";
-const Manageuser = ({ userId ,user }) => {
+const Manageuser = ({ userId, user }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -29,20 +29,20 @@ const Manageuser = ({ userId ,user }) => {
 
   const [buildingId, setBuildingId] = useState("");
   const [buildings, setBuildings] = useState([]);
-  
+
 
   useEffect(() => {
     const fetchBuildings = async () => {
       try {
         const encodedCredentials = btoa("Pearl:PearlProdChecker@12390");
-  
+
         const response = await axios.get(
           "https://societyadmin.ddns.net/admin/buildings",
           {
             headers: { Authorization: `Basic ${encodedCredentials}` },
           }
         );
-  
+
         console.log("API Response:", response);
         setBuildings(response.data);
       } catch (error) {
@@ -53,10 +53,10 @@ const Manageuser = ({ userId ,user }) => {
         }
       }
     };
-  
+
     fetchBuildings();
   }, []);
-  
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -87,7 +87,7 @@ const Manageuser = ({ userId ,user }) => {
   const handleApprove = async (id) => {
     const encodedCredentials = btoa("Pearl:PearlProdChecker@12390");
     const token = localStorage.getItem("token");
-  
+
     try {
       const rs = await axios.get(
         `https://societyadmin.ddns.net/admin/approveUser?userId=${id}`,
@@ -95,19 +95,19 @@ const Manageuser = ({ userId ,user }) => {
           headers: { 'Authorization': `Bearer ${token}` }
         }
       );
-  
+
       setUsers((prevUsers) =>
         prevUsers.map((user) =>
           user.id === id ? { ...user, ownerApproved: rs.data.ownerApproved } : user
         )
       );
-  
+
       setOwnerApproved(rs.data.ownerApproved);
     } catch (error) {
       console.error("Approval failed", error);
     }
   };
-  
+
 
 
   const handleSubmit = async (e) => {
@@ -181,7 +181,7 @@ const Manageuser = ({ userId ,user }) => {
     <div className="mt-16">
       <h1 className="font-bold text-2xl">Manage Users!</h1>
 
-      <div className="pt-3 flex flex-row items-center lg:gap-[750px] gap-2">
+      <div className="pt-3 flex flex-row items-center lg:gap-[794px] gap-2">
         <button
           className="text-md bg-[#41CD68] p-2 cursor-pointer rounded-md flex flex-row items-center text-white lg:gap-1"
           onClick={openAddUserPopup}
@@ -221,23 +221,23 @@ const Manageuser = ({ userId ,user }) => {
                   <input type="number" name="floor" placeholder="Floor" value={floor} onChange={(e) => setfloor(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
                   <input type="text" name="role" placeholder="Role" value={role} onChange={(e) => setrole(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
                   <select
-  name="buildingId"
-  value={buildingId}
-  onChange={(e) => setBuildingId(e.target.value)}
-  
-  required
-  className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]"
->
-<option value="" disabled>Building Building</option>
-    {buildings.map((building) => (
-      <option key={building.id} >
-       <span> {building.buildingName}</span><span> {building.id}</span>
-      </option>
-    ))}
-</select>
+                    name="buildingId"
+                    value={buildingId}
+                    onChange={(e) => setBuildingId(e.target.value)}
+
+                    required
+                    className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]"
+                  >
+                    <option value="" disabled>Building Building</option>
+                    {buildings.map((building, index) => (
+                      <option key={index} value={building.id} >
+                        <span> {building.buildingName}</span>
+                      </option>
+                    ))}
+                  </select>
 
                 </div>
-              </div> 
+              </div>
               <div className="flex justify-end gap-3 mt-6">
                 <button type="button" className="bg-gray-200 px-4 py-2 rounded-lg shadow-md hover:bg-gray-300 transition" onClick={closeAddUserPopup}>Cancel</button>
                 <button type="submit" className="bg-[#41CD68] text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition">Add User</button>
@@ -267,13 +267,13 @@ const Manageuser = ({ userId ,user }) => {
           {users?.map((user) => (
             <div
               key={user.id}
-              className=" cursor-pointer p-4  rounded-md lg:rounded-none mb-4 "
+              className=" cursor-pointer mt-2  rounded-md lg:rounded-none mb-4 "
 
             >
               {/* Desktop View (Table Row) */}
               <div className="hidden lg:flex lg:w-full lg:items-center  bg-white p-4 rounded-md"
               >
-                <div className="flex flex-row gap-28" onClick={() => openPopup(user)}>
+                <div className="flex flex-row gap-30" onClick={() => openPopup(user)}>
                   <div className="w-4">{user.role}</div>
                   <div className="w-4">{user.firstName}</div>
                   <div className="w-4 ">{user.lastName}</div>
@@ -281,9 +281,10 @@ const Manageuser = ({ userId ,user }) => {
                   <div className="w-4 ml-26">{user.phoneNumber}</div>
                 </div>
                 <div className="w-40 flex gap-3 ml-38">
-                <button onClick={() => handleApprove(user.id)} className="text-[#41CD68] cursor-pointer text-2xl">
-  {user.ownerApproved ? <FcApprove /> : <FcDisapprove />}
-</button>
+                  <button onClick={() => handleApprove(user.id)} className="">
+                    {user.ownerApproved ? <FaCheck className="text-[#41CD68] cursor-pointer text-xl"/>
+                      :  <FaCheck className="text-gray-600 cursor-pointer text-xl"/>}
+                  </button>
 
 
 
@@ -321,15 +322,16 @@ const Manageuser = ({ userId ,user }) => {
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Flat Number:</span> {user.flatNumber}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Flat Type:</span> {user.flatType}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Box Number:</span> {user.boxNumber}</h4>
-                 
+
 
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex justify-center mt-4 gap-3">
-                <button onClick={() => handleApprove(user.id)} className="text-[#41CD68] cursor-pointer text-2xl">
-  {user.ownerApproved ? <FcApprove /> : <FcDisapprove />}
-</button>
+                  <button onClick={() => handleApprove(user.id)} className="text-[#41CD68] cursor-pointer text-xl">
+                    {user.ownerApproved ? <FaCheck />
+                      : <ImCross />}
+                  </button>
 
                   <button className="text-[#41CD68] cursor-pointer text-2xl"><MdEditSquare /></button>
                   <button className="text-[#41CD68] cursor-pointer text-2xl"><MdDelete /></button>
@@ -375,18 +377,18 @@ const Manageuser = ({ userId ,user }) => {
                   <span className="font-bold">Phone Number:</span><span className="text-end"> {selectedUser.phoneNumber}</span>
                 </h4>
                 <h4 className="text-sm text-gray-600 flex items-end justify-between">
-  <span className="font-bold">Owner Approved:</span>
-  <span className="text-end">
-    {selectedUser.ownerApproved ? "✅ Approved" : "❌ Not Approved"}
-  </span>
-</h4>
+                  <span className="font-bold">Owner Approved:</span>
+                  <span className="text-end">
+                    {selectedUser.ownerApproved ? "✅ Approved" : "❌ Not Approved"}
+                  </span>
+                </h4>
 
-<h4 className="text-sm text-gray-600 flex items-end justify-between">
-  <span className="font-bold">Syndic Approved:</span>
-  <span className="text-end">
-    {selectedUser.syndicApproved ? "✅ Approved" : "❌ Not Approved"}
-  </span>
-</h4>
+                <h4 className="text-sm text-gray-600 flex items-end justify-between">
+                  <span className="font-bold">Syndic Approved:</span>
+                  <span className="text-end">
+                    {selectedUser.syndicApproved ? "✅ Approved" : "❌ Not Approved"}
+                  </span>
+                </h4>
 
                 <h4 className="text-sm text-gray-600 flex items-end justify-between">
                   <span className="font-bold">Residence:</span><span className="text-end"> {selectedUser.residence}</span>

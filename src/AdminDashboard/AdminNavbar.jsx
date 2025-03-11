@@ -16,6 +16,7 @@ import Facility from "./pages/Facility";
 import PrankingManager from "./pages/PrankingManager";
 import StaffManager from "./pages/StaffManager";
 import NoticeManager from "./pages/NoticeManager";
+import AllBuildings from "./pages/AllBuildings";
 
 export default function AdminNavbar() {
   const [isOpen, setOpen] = useState(false);
@@ -40,7 +41,7 @@ export default function AdminNavbar() {
     const pages = {
       "Manage User": <Manageuser />,
       "HelpDesk Trackers": <HelpDesk />,
-      "Income Tracker": <Income />,
+    "All Buildings":<AllBuildings/>,
       "Expense Tracker": <ExpenseTracker />,
       "Utility Tracker": <Utility />,
       "General Ledger": <General />,

@@ -13,6 +13,7 @@ const HelpDesk = () => {
   const [open, setOpen] = useState(false);
 
   return (
+    <>
     <div className="mt-16">
       <h2 className="font-bold text-2xl">HelpDesk Tracker</h2>
 
@@ -22,10 +23,10 @@ const HelpDesk = () => {
           onClick={() => setOpen(true)}
         >
           <div>
-            <span className="font-bold text-nowrap">Subject :</span>
-            <p className="text-gray-400 text-nowrap">Ticket Id :</p>
-            <p className="text-gray-400 text-nowrap">Discription :</p>
-            <p className="text-gray-400 text-nowrap">Date :</p>
+            <span className="font-bold text-nowrap">Subject : guru</span>
+            <p className="text-gray-400 text-nowrap">Ticket Id :01</p>
+            <p className="text-gray-400 text-nowrap">Discription : helpdesk data</p>
+            <p className="text-gray-400 text-nowrap">Date :3/3/2025</p>
 
             <div className="flex flex-row items-center gap-2 pt-2">
               <button type="button"
@@ -38,7 +39,7 @@ const HelpDesk = () => {
           <div>
             <button
               type="button"
-              className="bg-green-100 text-green-400 pt-1 pb-1 pl-3 pr-3 rounded-full"
+              className="font-normal text-sm text-green-400 pt-1 pb-1 pl-3 pr-3 rounded-full"
             >
               Open
             </button>
@@ -50,10 +51,10 @@ const HelpDesk = () => {
           onClick={() => setOpen(true)}
         >
           <div>
-            <span className="font-bold text-nowrap">Subject :</span>
-            <p className="text-gray-400 text-nowrap">Ticket Id :</p>
-            <p className="text-gray-400 text-nowrap">Discription :</p>
-            <p className="text-gray-400 text-nowrap">Date :</p>
+            <span className="font-bold text-nowrap">Subject : dev</span>
+            <p className="text-gray-400 text-nowrap">Ticket Id :03 </p>
+            <p className="text-gray-400 text-nowrap">Discription : helpdesk data</p>
+            <p className="text-gray-400 text-nowrap">Date : 9/3/2025</p>
 
             <div className="flex flex-row items-center gap-2 pt-2">
               <button type="button"
@@ -66,7 +67,7 @@ const HelpDesk = () => {
           <div>
             <button
               type="button"
-              className="bg-green-100 text-green-400 pt-1 pb-1 pl-3 pr-3 rounded-full"
+              className="font-normal text-sm text-green-400 pt-1 pb-1 pl-3 pr-3 rounded-full"
             >
               Open
             </button>
@@ -87,56 +88,48 @@ const HelpDesk = () => {
            <div className="overflow-hidden rounded-2xl">
              <div className="p-0">
              <Swiper
-              modules={[Navigation, Pagination]}
-              navigation
-              pagination={{ clickable: true }}
-              className="w-full h-auto "
-            >
-              {images.map((src, index) => (
-                <SwiperSlide key={index}>
-                  <img src={src} alt={`Slide ${index + 1}`} className="w-full h-auto max-h-[300px] object-contain" />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+  modules={[Navigation, Pagination]}
+  navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
+  pagination={{ clickable: true }}
+  className="w-full h-auto relative"
+>
+  {images.map((src, index) => (
+    <SwiperSlide key={index} className="text-sm">
+      <img src={src} alt={`Slide ${index + 1}`} className="w-full h-auto max-h-[300px] object-contain" />
+    </SwiperSlide>
+  ))}
+
+
+</Swiper>
+
              </div>
            </div>
    
            <div className="p-5">
              <div>
-               <span className="font-bold text-nowrap">Subject :</span>
-               <p className="text-gray-400 text-nowrap">Ticket Id :</p>
+               <span className="font-bold text-nowrap">Subject : guru</span>
+               <p className="text-gray-400 text-nowrap">Ticket Id :01</p>
                <span className="text-gray-400 text-nowrap">
                  Status:{" "}
                  <button
                    type="button"
-                   className="bg-green-100 text-green-400 pt-1 pb-1 pl-3 pr-3 rounded-full ml-32"
+                   className="font-normal text-sm text-green-400 pt-1 pb-1 pl-3 pr-3 rounded-full ml-32"
                  >
                    Open
                  </button>
                </span>
-               <p className="text-gray-400 text-nowrap">Description :</p>
-               <p className="text-gray-400 text-nowrap">Date :</p>
+               <p className="text-gray-400 text-nowrap">Description : helpdesk data</p>
+               <p className="text-gray-400 text-nowrap">Date :3/3/2025</p>
    
-               <div className="flex flex-row items-center gap-2 mt-2">
-                 <button
-                   type="button"
-                   className="bg-blue-100 text-blue-400 pt-1 pb-1 pl-3 pr-3 rounded-full text-nowrap"
-                 >
-                   Create Ticket
-                 </button>
-                 <button
-                   type="button"
-                   className="bg-yellow-100 text-yellow-400 pt-1 pb-1 pl-3 pr-3 rounded-full text-nowrap"
-                 >
-                   Update Ticket
-                 </button>
-               </div>
+             
              </div>
            </div>
          </div>
        </div>
       )}
     </div>
+ 
+  </>
   );
 };
 
