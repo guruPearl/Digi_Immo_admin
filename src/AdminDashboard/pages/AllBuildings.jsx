@@ -57,28 +57,33 @@ const AllBuildings = () => {
             <div className="w-40">StreetName</div>
        
           </div>
-            {buildings.map((building, index) => (
-                <div
-                    key={index}
-                    className=" cursor-pointer mt-2  rounded-md lg:rounded-none mb-4 "
+          {buildings.map((building, index) => (
+  <div key={index} className="cursor-pointer mt-2 rounded-md lg:rounded-none mb-4">
+    
+    {/* Desktop View (Table Row) */}
+    <div className="hidden lg:flex lg:w-full lg:items-center bg-white p-4 rounded-md">
+      <div className="flex flex-row gap-20">
+        <div className="w-20">{building.buildingNumber}</div>
+        <div className="w-40">{building.buildingName}</div>
+        <div className="w-20">{building.pincode}</div>
+        <div className="w-20">{building.city}</div>
+        <div className="w-40">{building.streetName}</div>
+      </div>
+    </div>
 
-                >
-                    {/* Desktop View (Table Row) */}
-                    <div className="hidden lg:flex lg:w-full lg:items-center  bg-white p-4 rounded-md"
-                    >
-                        <div className="flex flex-row gap-42">
-                        <div className="w-4 ">{building.buildingNumber}</div>
-                            <div className="w-4">{building.buildingName}</div>
-                            <div className="w-4">{building.pincode}</div>
-                            <div className="w-4 ">{building.city}</div>
-                            <div className="w-4">{building.streetName}</div>
-                           
-                        </div>
+    {/* Mobile View (Card Layout) */}
+    <div className="lg:hidden bg-white p-4 rounded-lg shadow-md">
+      <div className="text-center space-y-2">
+        <h4 className="text-sm text-gray-600"><span className="font-bold">Building No:</span> {building.buildingNumber}</h4>
+        <h4 className="text-sm text-gray-600"><span className="font-bold">Building Name:</span> {building.buildingName}</h4>
+        <h4 className="text-sm text-gray-600"><span className="font-bold">Pincode:</span> {building.pincode}</h4>
+        <h4 className="text-sm text-gray-600"><span className="font-bold">City:</span> {building.city}</h4>
+        <h4 className="text-sm text-gray-600"><span className="font-bold">Street Name:</span> {building.streetName}</h4>
+      </div>
+    </div>
+  </div>
+))}
 
-                    </div>
-                </div>
-
-            ))}
         </div>
     );
 };
