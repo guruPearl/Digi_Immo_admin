@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { IoIosAddCircle } from "react-icons/io";
 
 
 const AllBuildings = () => {
@@ -35,7 +36,20 @@ const AllBuildings = () => {
 
     return (
         <div className="mt-16 font-bold">
-             <div className="hidden lg:flex flex-row items-center gap-6 bg-[#41CD68] text-white p-3 rounded-md">
+             <h1 className="font-bold text-2xl">Manage Buildings!</h1>
+            
+                  <div className="pt-3 flex flex-row items-center lg:gap-[794px] gap-2">
+                    <button
+                      className="text-md bg-[#41CD68] p-2 cursor-pointer rounded-md flex flex-row items-center text-white lg:gap-1"
+                  
+                    >
+                      <IoIosAddCircle /> Create Building
+                    </button>
+            
+                  
+                  </div>
+
+             <div className="hidden lg:flex flex-row items-center gap-6 bg-[#41CD68] text-white p-3 rounded-md mt-4">
             <div className="w-40 text-nowrap">Building Number</div>
             <div className="w-40">Building Name</div>
             <div className="w-40">Pincode</div>
