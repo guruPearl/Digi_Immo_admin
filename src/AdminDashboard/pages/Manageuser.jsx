@@ -6,7 +6,8 @@ import { MdEditSquare, MdDelete } from "react-icons/md";
 
 import { FcApprove } from "react-icons/fc";
 import { FcDisapprove } from "react-icons/fc";
-const Manageuser = ({ userId,user }) => {
+import { data } from "react-router-dom";
+const Manageuser = ({ userId ,user }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -14,9 +15,48 @@ const Manageuser = ({ userId,user }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showBuildingDetails, setShowBuildingDetails] = useState(false);
   const [showAddUserPopup, setShowAddUserPopup] = useState(false);
-  const [ownerApproved, setOwnerApproved] = useState(user?.ownerApproved);
+  const [ownerApproved, setOwnerApproved] = useState(false);
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [email, setemail] = useState("");
+  const [phoneNumber, setphoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [boxNumber, setboxNumber] = useState("");
+  const [flatNumber, setflatNumber] = useState("");
+  const [flatType, setflatType] = useState("");
+  const [floor, setfloor] = useState("");
+  const [role, setrole] = useState("");
 
+  const [buildingId, setBuildingId] = useState("");
+  const [buildings, setBuildings] = useState([]);
+  
 
+  useEffect(() => {
+    const fetchBuildings = async () => {
+      try {
+        const encodedCredentials = btoa("Pearl:PearlProdChecker@12390");
+  
+        const response = await axios.get(
+          "https://societyadmin.ddns.net/admin/buildings",
+          {
+            headers: { Authorization: `Basic ${encodedCredentials}` },
+          }
+        );
+  
+        console.log("API Response:", response);
+        setBuildings(response.data);
+      } catch (error) {
+        if (error.response) {
+          console.error("API Error:", error.response.status, error.response.data);
+        } else {
+          console.error("Network Error:", error.message);
+        }
+      }
+    };
+  
+    fetchBuildings();
+  }, []);
+  
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -44,55 +84,81 @@ const Manageuser = ({ userId,user }) => {
   };
 
 
-  const handleApprove = async () => {
+  const handleApprove = async (id) => {
+    const encodedCredentials = btoa("Pearl:PearlProdChecker@12390");
+    const token = localStorage.getItem("token");
+  
     try {
-      const response = await fetch(
-        `https://societyadmin.ddns.net/admin/approveUser?userId=${user.id}`,
-        { method: "POST" }
+      const rs = await axios.get(
+        `https://societyadmin.ddns.net/admin/approveUser?userId=${id}`,
+        {
+          headers: { 'Authorization': `Bearer ${token}` }
+        }
       );
-      if (response.ok) {
-        setOwnerApproved(true);
-      }
+  
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user.id === id ? { ...user, ownerApproved: rs.data.ownerApproved } : user
+        )
+      );
+  
+      setOwnerApproved(rs.data.ownerApproved);
     } catch (error) {
       console.error("Approval failed", error);
     }
   };
+  
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const userData = Object.fromEntries(formData.entries());
-  
-    console.log("Sending data:", userData); 
-  
+    const encodedCredentials = btoa("Pearl:PearlProdChecker@12390");
+    const formData = new FormData();
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+    formData.append("email", email);
+    formData.append("phoneNumber", phoneNumber);
+    formData.append("password", password)
+    formData.append("boxNumber", boxNumber)
+    formData.append("flatNumber", flatNumber)
+    formData.append("flatType", flatType)
+    formData.append("floor", floor)
+    formData.append("role", role)
+    formData.append("buildingId", buildingId)
+
+    console.log("Sending data:", Object.fromEntries(formData.entries()));
+
+
+
     try {
-      const response = await fetch("https://societyadmin.ddns.net/admin/createUser", {
-        method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data",
-          
-        },
-        body: JSON.stringify(userData),
-      });
-  
-      const responseData = await response.json();
-      console.log("Response Data:", responseData);
-  
-      if (response.ok) {
+      const response = await axios.post(
+        "https://societyadmin.ddns.net/admin/createUser",
+        formData,
+        {
+          headers: {
+            "Authorization": `Basic ${encodedCredentials}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log("Response Data:", response.data);
+
+      if (response.status === 200 || response.status === 201) {
         alert("User added successfully!");
         closeAddUserPopup();
       } else {
-        alert(`Failed to add user: ${responseData.message || "Unknown error"}`);
+        alert(`Failed to add user: ${response.data.message || "Unknown error"}`);
       }
     } catch (error) {
       console.error("Error adding user:", error);
-      alert("Network error. Please try again.");
+      alert(error.response?.data?.message || "Network error. Please try again.");
     }
   };
-  
-  
- 
+
+
   const handleDeleteUser = () => {
-  
+
 
     fetch(`https://societyadmin.ddns.net/admin/approveUser?userId=${userId}`, {
       method: "DELETE",
@@ -101,7 +167,7 @@ const Manageuser = ({ userId,user }) => {
       .then((data) => {
         if (data.success) {
           alert("User deleted successfully!");
-    
+
         } else {
           alert("Failed to delete user.");
         }
@@ -137,31 +203,46 @@ const Manageuser = ({ userId,user }) => {
             className="bg-white p-6 rounded-xl shadow-lg w-[350px] relative"
             onClick={(e) => e.stopPropagation()}
           >
-            
-<form onSubmit={handleSubmit} className="bg-white rounded-xl w-full max-w-md mx-auto">
-  <h2 className="text-xl font-semibold mb-4 text-gray-700">Add New User</h2>
-  <div className="grid grid-cols-2 gap-4">
-    <div className="flex flex-col gap-3">
-      <input type="text" name="firstName" placeholder="First Name"  required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-      <input type="text" name="lastName" placeholder="Last Name" required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-      <input type="email" name="email" placeholder="Email" required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-      <input type="tel" name="phoneNumber" placeholder="Phone Number" required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-      <input type="password" name="password" placeholder="Password" required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-    </div>
-    <div className="flex flex-col gap-3">
-      <input type="number" name="boxNumber" placeholder="Box Number" className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-      <input type="number" name="flatNumber" placeholder="Flat Number" required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-      <input type="text" name="flatType" placeholder="Flat Type" required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-      <input type="number" name="floor" placeholder="Floor" required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-      <input type="text" name="role" placeholder="Role" required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-      <input type="number" name="buildingId" placeholder="Building ID" required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
-    </div>
-  </div>
-  <div className="flex justify-end gap-3 mt-6">
-    <button type="button" className="bg-gray-200 px-4 py-2 rounded-lg shadow-md hover:bg-gray-300 transition" onClick={closeAddUserPopup}>Cancel</button>
-    <button type="submit" className="bg-[#41CD68] text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition">Add User</button>
-  </div>
-</form>
+
+            <form onSubmit={handleSubmit} className="bg-white rounded-xl w-full max-w-md mx-auto">
+              <h2 className="text-xl font-semibold mb-4 text-gray-700">Add New User</h2>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-col gap-3">
+                  <input type="text" name="firstName" placeholder="First Name" onChange={(e) => setfirstName(e.target.value)} value={firstName} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                  <input type="text" name="lastName" placeholder="Last Name" value={lastName} onChange={(e) => setlastName(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                  <input type="email" name="email" placeholder="Email" value={email} onChange={(e) => setemail(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                  <input type="tel" name="phoneNumber" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setphoneNumber(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                  <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                </div>
+                <div className="flex flex-col gap-3">
+                  <input type="number" name="boxNumber" placeholder="Box Number" value={boxNumber} onChange={(e) => setboxNumber(e.target.value)} className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                  <input type="number" name="flatNumber" placeholder="Flat Number" value={flatNumber} onChange={(e) => setflatNumber(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                  <input type="text" name="flatType" placeholder="Flat Type" value={flatType} onChange={(e) => setflatType(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                  <input type="number" name="floor" placeholder="Floor" value={floor} onChange={(e) => setfloor(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                  <input type="text" name="role" placeholder="Role" value={role} onChange={(e) => setrole(e.target.value)} required className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]" />
+                  <select
+  name="buildingId"
+  value={buildingId}
+  onChange={(e) => setBuildingId(e.target.value)}
+  
+  required
+  className="w-full p-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#41CD68]"
+>
+<option value="" disabled>Building Building</option>
+    {buildings.map((building) => (
+      <option key={building.id} >
+       <span> {building.buildingName}</span><span> {building.id}</span>
+      </option>
+    ))}
+</select>
+
+                </div>
+              </div> 
+              <div className="flex justify-end gap-3 mt-6">
+                <button type="button" className="bg-gray-200 px-4 py-2 rounded-lg shadow-md hover:bg-gray-300 transition" onClick={closeAddUserPopup}>Cancel</button>
+                <button type="submit" className="bg-[#41CD68] text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition">Add User</button>
+              </div>
+            </form>
 
           </div>
         </div>
@@ -186,71 +267,70 @@ const Manageuser = ({ userId,user }) => {
           {users?.map((user) => (
             <div
               key={user.id}
-              className=" cursor-pointer p-4  rounded-md lg:rounded-none mb-4 lg:mb-0 lg:flex lg:flex-row lg:items-center lg:gap-6"
-              onClick={() => openPopup(user)}
+              className=" cursor-pointer p-4  rounded-md lg:rounded-none mb-4 "
+
             >
               {/* Desktop View (Table Row) */}
-              <div className="hidden lg:flex lg:w-full lg:items-center lg:justify-between bg-white gap-2 p-4 rounded-md">
-
-                <div className="w-40">{user.role}</div>
-                <div className="w-40 pr-6">{user.firstName}</div>
-                <div className="w-40 text-nowrap pr-6">{user.lastName}</div>
-                <div className="w-40">{user.email}</div>
-                <div className="w-40">{user.phoneNumber}</div>
-                <div className="w-40 flex gap-3">
-      
-                <button
-        className="text-[#41CD68] cursor-pointer text-xl"
-        onClick={handleApprove}
-        disabled={ownerApproved}
-      >
-        {ownerApproved ? <FcApprove /> : <FcDisapprove />}
-      </button>
+              <div className="hidden lg:flex lg:w-full lg:items-center  bg-white p-4 rounded-md"
+              >
+                <div className="flex flex-row gap-28" onClick={() => openPopup(user)}>
+                  <div className="w-4">{user.role}</div>
+                  <div className="w-4">{user.firstName}</div>
+                  <div className="w-4 ">{user.lastName}</div>
+                  <div className="w-4">{user.email}</div>
+                  <div className="w-4 ml-26">{user.phoneNumber}</div>
+                </div>
+                <div className="w-40 flex gap-3 ml-38">
+                <button onClick={() => handleApprove(user.id)} className="text-[#41CD68] cursor-pointer text-2xl">
+  {user.ownerApproved ? <FcApprove /> : <FcDisapprove />}
+</button>
 
 
-        <button className="text-[#41CD68] cursor-pointer text-xl">
-          <MdEditSquare />
-        </button>
-      
 
-   
-      
-        
-        <button
-          className="text-red-500 cursor-pointer text-xl"
-          onClick={handleDeleteUser}
-        >
-          <MdDelete />
-        </button>
-    
-      
-    </div>
+                  <button className="text-[#41CD68] cursor-pointer text-xl">
+                    <MdEditSquare />
+                  </button>
+
+
+
+
+
+                  <button
+                    className="text-red-500 cursor-pointer text-xl"
+                    onClick={handleDeleteUser}
+                  >
+                    <MdDelete />
+                  </button>
+
+
+                </div>
               </div>
 
               {/* Mobile View (Card Layout) */}
               <div className="lg:hidden bg-white p-4 rounded-lg shadow-md">
 
                 {/* Additional Info */}
-                <div className="mt-4 space-y-2 text-center">
+                <div className="mt-4 space-y-2 text-center" onClick={() => openPopup(user)}>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Role:</span> {user.role}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">First Name:</span> {user.firstName}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Last Name:</span> {user.lastName}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Email:</span> {user.email}</h4>
-                  <h4 className="text-sm text-gray-600"><span className="font-bold">Phone Number:</span> {user.phoneNumber}</h4>
-                  <h4 className="text-sm text-gray-600"><span className="font-bold">SyndicApproved:</span> {user.syndicApproved}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">OwnerApproved:</span> {user.ownerApproved}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Residence:</span> {user.residence}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Floor:</span> {user.floor}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Flat Number:</span> {user.flatNumber}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Flat Type:</span> {user.flatType}</h4>
                   <h4 className="text-sm text-gray-600"><span className="font-bold">Box Number:</span> {user.boxNumber}</h4>
-                  {/* <h4 className="text-sm text-gray-600"><span className="font-bold">Building:</span> {user.building}</h4> */}
+                 
 
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex justify-center mt-4 gap-3">
-                  
+                <button onClick={() => handleApprove(user.id)} className="text-[#41CD68] cursor-pointer text-2xl">
+  {user.ownerApproved ? <FcApprove /> : <FcDisapprove />}
+</button>
+
                   <button className="text-[#41CD68] cursor-pointer text-2xl"><MdEditSquare /></button>
                   <button className="text-[#41CD68] cursor-pointer text-2xl"><MdDelete /></button>
                 </div>
@@ -295,6 +375,20 @@ const Manageuser = ({ userId,user }) => {
                   <span className="font-bold">Phone Number:</span><span className="text-end"> {selectedUser.phoneNumber}</span>
                 </h4>
                 <h4 className="text-sm text-gray-600 flex items-end justify-between">
+  <span className="font-bold">Owner Approved:</span>
+  <span className="text-end">
+    {selectedUser.ownerApproved ? "✅ Approved" : "❌ Not Approved"}
+  </span>
+</h4>
+
+<h4 className="text-sm text-gray-600 flex items-end justify-between">
+  <span className="font-bold">Syndic Approved:</span>
+  <span className="text-end">
+    {selectedUser.syndicApproved ? "✅ Approved" : "❌ Not Approved"}
+  </span>
+</h4>
+
+                <h4 className="text-sm text-gray-600 flex items-end justify-between">
                   <span className="font-bold">Residence:</span><span className="text-end"> {selectedUser.residence}</span>
                 </h4>
                 <h4 className="text-sm text-gray-600 flex items-end justify-between">
@@ -320,7 +414,7 @@ const Manageuser = ({ userId,user }) => {
                       Building Details
                     </button>
                   </div>
-                
+
                 </div>
               </>
             ) : (
