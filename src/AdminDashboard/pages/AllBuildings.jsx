@@ -35,6 +35,14 @@ const AllBuildings = () => {
 
     return (
         <div className="mt-16 font-bold">
+             <div className="hidden lg:flex flex-row items-center gap-6 bg-[#41CD68] text-white p-3 rounded-md">
+            <div className="w-40 text-nowrap">Building Number</div>
+            <div className="w-40">Building Name</div>
+            <div className="w-40">Pincode</div>
+            <div className="w-40">City</div>
+            <div className="w-40">StreetName</div>
+       
+          </div>
             {buildings.map((building, index) => (
                 <div
                     key={index}
@@ -44,7 +52,7 @@ const AllBuildings = () => {
                     {/* Desktop View (Table Row) */}
                     <div className="hidden lg:flex lg:w-full lg:items-center  bg-white p-4 rounded-md"
                     >
-                        <div className="flex flex-row gap-30">
+                        <div className="flex flex-row gap-42">
                         <div className="w-4 ">{building.buildingNumber}</div>
                             <div className="w-4">{building.buildingName}</div>
                             <div className="w-4">{building.pincode}</div>
